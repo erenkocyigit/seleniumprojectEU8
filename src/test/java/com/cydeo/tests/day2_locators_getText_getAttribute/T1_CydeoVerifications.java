@@ -22,13 +22,29 @@ public class T1_CydeoVerifications {
 
 
         //2. Go to https://practice.cydeo.com
-
+        driver.get("https://practice.cydeo.com");
 
         //3. Verify URL contains
         //Expected: cydeo
+        String expectedURL = "cydeo";
+        String actualURL = driver.getCurrentUrl();
 
-
+        if (actualURL.contains(expectedURL)){
+            System.out.println("URL PASS");
+        }else{
+            System.out.println("URL FAILED ");
+        }
         // 4. Verify title:
+
+        String expectedTitle = "Practice";
+        String actualTitle = driver.getTitle();
+        if (actualTitle.contains(expectedTitle)){
+            System.out.println("TITLE PASSED");
+        }else{
+            System.out.println("TITLE FAILED");
+        }
+
+        driver.close();
         //Expected: Practice
 
 
