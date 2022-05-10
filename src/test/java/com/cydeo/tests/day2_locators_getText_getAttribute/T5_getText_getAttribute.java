@@ -39,6 +39,13 @@ public class T5_getText_getAttribute {
         String expectedPlaceHolder = "first name";
         String actualPlaceHolder = firstNameInput.getAttribute("placeholder");
 
+        if (actualPlaceHolder.equals(expectedPlaceHolder)){
+            System.out.println("Correct place holder");
+        }else{
+            System.out.println("Wrong place holder");
+        }
+
+
 
 
 
