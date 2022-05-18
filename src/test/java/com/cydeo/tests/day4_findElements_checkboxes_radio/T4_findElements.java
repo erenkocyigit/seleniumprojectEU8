@@ -17,11 +17,20 @@ public class T4_findElements {
         //providing extra wait time four our driver before it throws NoSuchElementException
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         
-        driver.get("https://practice.cydeo.com.abtest");
+        driver.get("https://practice.cydeo.com/abtest");
         
         // locate all the links in the page
         List<WebElement> allLinks = driver.findElements(By.tagName("a"));
 
+        //print out the number of the links on the page
+        System.out.println("allLinks.size() = " + allLinks.size());
+
+        for (WebElement each : allLinks) {
+            System.out.println("Text of link: " + each.getText());
+            System.out.println("HREF Values: " + each.getAttribute("href"));
+        }
+
+        //print out the HREF attribute values of the links
 
 
     }
