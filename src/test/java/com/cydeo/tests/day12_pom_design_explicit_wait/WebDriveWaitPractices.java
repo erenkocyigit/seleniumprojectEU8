@@ -1,5 +1,6 @@
 package com.cydeo.tests.day12_pom_design_explicit_wait;
 
+import com.cydeo.pages.DynamicLoad1Page;
 import com.cydeo.pages.DynamicLoad7Page;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.Driver;
@@ -42,8 +43,29 @@ public class WebDriveWaitPractices {
     public void dynamic_load_1_test(){
         //1. Go to https://practice.cydeo.com/dynamic_loading/1
         Driver.getDriver().get("https://practice.cydeo.com/dynamic_loading/1");
+        DynamicLoad1Page dynamicLoad1Page = new DynamicLoad1Page();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+
+
         //click to start
+        dynamicLoad1Page.startButton.click();
+
         //wait until loading bar disappears
+        wait.until(ExpectedConditions.invisibilityOf(dynamicLoad1Page.loadingBar));
+
+        //Assert username inputbox is displayed
+        Assert.assertTrue(dynamicLoad1Page.inputUserName.isDisplayed());
+
+        //enter username : tomsmith
+        dynamicLoad1Page.inputUserName.sendKeys("tomsmith");
+
+        //enter password : incorrectpassword
+        dynamicLoad1Page.inputPassword.sendKeys("somethingwrong");
+        //click to submit button
+        dynamicLoad1Page.submitButton.click();
+        //Asser "Your password is invalid!" text is displayed
+        Assert.assertTrue(dynamicLoad1Page.errorMessage.isDisplayed());
+
 
     }
 }
